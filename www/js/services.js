@@ -1,14 +1,74 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
+.factory('Projects', function() {
+
+  var cards = [
+    {
+      id: 1,
+      img: 'img/max.png',
+      name: 'Mike Perry',
+      occupation: 'Ingeniero Civil',
+      title: 'Teampreneur',
+      subtitle: 'Plataforma para conectar emprendedores',
+      description: 'Bacon ipsum dolor amet brisket chuck beef ribs filet mignon kevin bacon doner prosciutto leberkas t-bone pastrami swine. Pastrami chuck short loin filet mignon salami sausage ground round doner hamburger tail ball tip. Sirloin ham hock meatloaf beef ribs strip steak. Shankle cupim salami swine ribeye leberkas.',
+      keywords: [
+        'java',
+        'desarrollo web',
+        'desarrollo móvil',
+        'cordova'
+      ]
+    },
+    {
+      id: 2,
+      img: 'img/mike.png',
+      name: 'Marty McFly',
+      occupation: 'Diseñador web',
+      title: 'Lorem App',
+      subtitle: 'Bacon ipsum dolor',
+      description: 'Bacon ipsum dolor amet brisket chuck beef ribs filet mignon kevin bacon doner prosciutto leberkas t-bone pastrami swine. Pastrami chuck short loin filet mignon salami sausage ground round doner hamburger tail ball tip. Sirloin ham hock meatloaf beef ribs strip steak. Shankle cupim salami swine ribeye leberkas.',
+    keywords: [
+        'iphone',
+        'ios',
+        'apple',
+        'android'
+      ]
+    },
+  ];
+
+  return {
+    all: function() {
+      return cards;
+    },
+    get: function(cardId) {
+      for (var i = 0; i < cards.length; i++) {
+        if (cards[i].id === parseInt(cardId)) {
+          return cards[i];
+        }
+      }
+      return null;
+    }
+  };
+
+})
+
+.factory('Applications', function() {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var chats = [{
+  var applications = [{
     id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'img/ben.png'
+    img: 'img/mike.png',
+    name: 'Marty McFly',
+    occupation: 'Diseñador web',
+    title: 'Lorem App',
+    subtitle: 'Bacon ipsum dolor',
+    description: 'Bacon ipsum dolor amet brisket chuck beef ribs filet mignon kevin bacon doner prosciutto leberkas t-bone pastrami swine. Pastrami chuck short loin filet mignon salami sausage ground round doner hamburger tail ball tip. Sirloin ham hock meatloaf beef ribs strip steak. Shankle cupim salami swine ribeye leberkas.',
+  keywords: [
+      'iphone',
+      'ios',
+      'apple',
+      'android'
+    ]
   }, {
     id: 1,
     name: 'Max Lynx',
@@ -33,15 +93,15 @@ angular.module('starter.services', [])
 
   return {
     all: function() {
-      return chats;
+      return applications;
     },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
+    remove: function(application) {
+      applications.splice(applications.indexOf(chat), 1);
     },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+    get: function(applicationId) {
+      for (var i = 0; i < applications.length; i++) {
+        if (applications[i].id === parseInt(applicationId)) {
+          return applications[i];
         }
       }
       return null;
