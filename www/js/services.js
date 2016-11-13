@@ -167,9 +167,7 @@ angular.module('starter.services', [])
 
   return {
     all: function() {
-      // return cards;
       return $http.get(ApiEndpoint.url + '/projects/offers');
-
     },
     get: function(cardId) {
       for (var i = 0; i < cards.length; i++) {

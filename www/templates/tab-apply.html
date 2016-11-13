@@ -2,7 +2,8 @@
   <ion-content scroll="false" id="tab-apply">
     
   	<td-cards>
-		  <td-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-swipe="cardSwiped($index)">
+		  <td-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-swipe="cardSwiped($index)" ng-click="$location.path('#/tab/apply/{{card.id}}')">
+		    <a >
 		    <div class="list card">
 
 		    	<div class="item item-divider">
@@ -34,6 +35,7 @@
 			    	</div>
 				  </div>
 				</div>
+				</a>
 		  </td-card>
 		</td-cards>
 

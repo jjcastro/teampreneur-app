@@ -55,14 +55,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   // Each tab has its own nav history stack:
 
   .state('tab.apply', {
-    url: '/apply',
-    views: {
-      'tab-apply': {
-        templateUrl: 'templates/tab-apply.html',
-        controller: 'ApplyCtrl'
+      url: '/apply',
+      views: {
+        'tab-apply': {
+          templateUrl: 'templates/tab-apply.html',
+          controller: 'ApplyCtrl'
+        }
       }
-    }
-  })
+    })
+    .state('tab.apply-detail', {
+      url: '/apply/:projectId',
+      views: {
+        'tab-apply': {
+          templateUrl: 'templates/apply-detail.html',
+          controller: 'ApplyDetailCtrl'
+        }
+      }
+    })
 
   .state('tab.applications', {
       url: '/applications',

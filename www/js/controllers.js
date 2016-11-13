@@ -27,6 +27,10 @@ angular.module('starter.controllers', [])
   };
 })
 
+.controller('ApplyDetailCtrl', function($scope, $stateParams, Projects) {
+  $scope.card = Projects.get($stateParams.projectId);
+})
+
 .controller('ApplicationsCtrl', function($scope, Applications) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.

@@ -11,6 +11,11 @@ td-card {
   /*transition: all 0.5s ease;*/
   width: 100%;
   z-index: 20;
+  
+}
+
+.td-card > .list.card{
+  height: 410px; 
 }
 
 td-card .item.item-text-wrap p {
