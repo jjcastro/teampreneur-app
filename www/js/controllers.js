@@ -2,10 +2,23 @@ angular.module('starter.controllers', [])
 
 .controller('ApplyCtrl', function($scope, Projects) {
   
-  $scope.cards = Projects.all();
+  Projects.all()
+    .success(function(data) {
+      console.log(data);
+      $scope.cards = data;
+
+      Projects.getKeywords(data[0].id)
+        .success(function(data) {
+          $scope.cards[0].keywords = data;
+        });
+    });
 
   $scope.cardDestroyed = function(index) {
     $scope.cards.splice(index, 1);
+    
+    if($scope.cards.length !== 0) {
+      $scope.cards[0].id
+    }
   };
 
   $scope.cardSwiped = function(index) {

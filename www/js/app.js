@@ -5,7 +5,11 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ionic.contrib.ui.tinderCards'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ionic.contrib.ui.tinderCards', 'mainCtrl', 'authService'])
+
+.constant('ApiEndpoint', {
+  url: 'http://localhost:8100/api'
+})
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -23,6 +27,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       StatusBar.style(1); //Light
     }
   });
+})
+
+// application configuration to integrate token into requests
+.config(function($httpProvider) {
+
+  // attach our auth interceptor to the http requests
+  $httpProvider.interceptors.push('AuthInterceptor');
+
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -99,6 +111,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         controller: 'AccountCtrl'
       }
     }
+  })
+
+  // login
+
+  .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html'
   });
 
   // if none of the above states are matched, use this as the fallback

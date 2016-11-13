@@ -1,6 +1,6 @@
 angular.module('starter.services', [])
 
-.factory('Projects', function() {
+.factory('Projects', function($http, ApiEndpoint, Auth) {
 
   var cards = [
     {
@@ -12,10 +12,78 @@ angular.module('starter.services', [])
       subtitle: 'Plataforma para conectar emprendedores',
       description: 'Bacon ipsum dolor amet brisket chuck beef ribs filet mignon kevin bacon doner prosciutto leberkas t-bone pastrami swine. Pastrami chuck short loin filet mignon salami sausage ground round doner hamburger tail ball tip. Sirloin ham hock meatloaf beef ribs strip steak. Shankle cupim salami swine ribeye leberkas.',
       keywords: [
-        'java',
-        'desarrollo web',
-        'desarrollo móvil',
-        'cordova'
+        {
+          name: 'java',
+          relevant: true,
+        },
+        {
+          name: 'desarrollo web',
+          relevant: true,
+        },
+        {
+          name: 'node.js',
+          relevant: true,
+        },
+        {
+          name: 'desarrollo móvil',
+          relevant: true,
+        },
+        {
+          name: 'cordova',
+          relevant: true,
+        },
+        {
+          name: 'responsive',
+          relevant: true,
+        },
+        {
+          name: 'backend',
+          relevant: false,
+        },
+        {
+          name: 'finanzas',
+          relevant: false,
+        },
+        {
+          name: 'administración',
+          relevant: false,
+        },
+        {
+          name: 'diseño',
+          relevant: false,
+        },
+        {
+          name: 'bilingüe',
+          relevant: false,
+        },
+        {
+          name: 'ti',
+          relevant: false,
+        },
+        {
+          name: 'gerente',
+          relevant: false,
+        },
+        {
+          name: 'administración',
+          relevant: false,
+        },
+        {
+          name: 'diseño',
+          relevant: false,
+        },
+        {
+          name: 'bilingüe',
+          relevant: false,
+        },
+        {
+          name: 'ti',
+          relevant: false,
+        },
+        {
+          name: 'gerente',
+          relevant: false,
+        },
       ]
     },
     {
@@ -27,17 +95,81 @@ angular.module('starter.services', [])
       subtitle: 'Bacon ipsum dolor',
       description: 'Bacon ipsum dolor amet brisket chuck beef ribs filet mignon kevin bacon doner prosciutto leberkas t-bone pastrami swine. Pastrami chuck short loin filet mignon salami sausage ground round doner hamburger tail ball tip. Sirloin ham hock meatloaf beef ribs strip steak. Shankle cupim salami swine ribeye leberkas.',
     keywords: [
-        'iphone',
-        'ios',
-        'apple',
-        'android'
+        {
+          name: 'iphone',
+          relevant: true,
+        },
+        {
+          name: 'ios',
+          relevant: true,
+        },
+        {
+          name: 'apple',
+          relevant: true,
+        },
+        {
+          name: 'android',
+          relevant: true,
+        },
+        {
+          name: 'backend',
+          relevant: false,
+        },
+        {
+          name: 'finanzas',
+          relevant: false,
+        },
+        {
+          name: 'administración',
+          relevant: false,
+        },
+        {
+          name: 'diseño',
+          relevant: false,
+        },
+        {
+          name: 'bilingüe',
+          relevant: false,
+        },
+        {
+          name: 'ti',
+          relevant: false,
+        },
+        {
+          name: 'gerente',
+          relevant: false,
+        },
+        {
+          name: 'administración',
+          relevant: false,
+        },
+        {
+          name: 'diseño',
+          relevant: false,
+        },
+        {
+          name: 'bilingüe',
+          relevant: false,
+        },
+        {
+          name: 'ti',
+          relevant: false,
+        },
+        {
+          name: 'gerente',
+          relevant: false,
+        },
       ]
     },
   ];
 
+
+
   return {
     all: function() {
-      return cards;
+      // return cards;
+      return $http.get(ApiEndpoint.url + '/projects/offers');
+
     },
     get: function(cardId) {
       for (var i = 0; i < cards.length; i++) {
@@ -46,12 +178,18 @@ angular.module('starter.services', [])
         }
       }
       return null;
-    }
+    },
+    getKeywords: function(projectId) {
+      return $http.get(ApiEndpoint.url + '/projects/' + projectId + '/keywords');
+    },
+    getRelevantKeywords: function(projectId) {
+      return $http.get(ApiEndpoint.url + '/projects/' + projectId + '/keywords/relevant');
+    },
   };
 
 })
 
-.factory('Applications', function() {
+.factory('Applications', function($http) {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
@@ -64,12 +202,72 @@ angular.module('starter.services', [])
     subtitle: 'Bacon ipsum dolor',
     description: 'Bacon ipsum dolor amet brisket chuck beef ribs filet mignon kevin bacon doner prosciutto leberkas t-bone pastrami swine. Pastrami chuck short loin filet mignon salami sausage ground round doner hamburger tail ball tip. Sirloin ham hock meatloaf beef ribs strip steak. Shankle cupim salami swine ribeye leberkas.',
   keywords: [
-      'iphone',
-      'ios',
-      'apple',
-      'android'
+      {
+          name: 'iphone',
+          relevant: true,
+        },
+        {
+          name: 'ios',
+          relevant: true,
+        },
+        {
+          name: 'apple',
+          relevant: true,
+        },
+        {
+          name: 'android',
+          relevant: true,
+        },
+        {
+          name: 'backend',
+          relevant: false,
+        },
+        {
+          name: 'finanzas',
+          relevant: false,
+        },
+        {
+          name: 'administración',
+          relevant: false,
+        },
+        {
+          name: 'diseño',
+          relevant: false,
+        },
+        {
+          name: 'bilingüe',
+          relevant: false,
+        },
+        {
+          name: 'ti',
+          relevant: false,
+        },
+        {
+          name: 'gerente',
+          relevant: false,
+        },
+        {
+          name: 'administración',
+          relevant: false,
+        },
+        {
+          name: 'diseño',
+          relevant: false,
+        },
+        {
+          name: 'bilingüe',
+          relevant: false,
+        },
+        {
+          name: 'ti',
+          relevant: false,
+        },
+        {
+          name: 'gerente',
+          relevant: false,
+        },
     ]
-  }, {
+  }/*, {
     id: 1,
     name: 'Max Lynx',
     lastText: 'Hey, it\'s me',
@@ -89,7 +287,7 @@ angular.module('starter.services', [])
     name: 'Mike Harrington',
     lastText: 'This is wicked good ice cream.',
     face: 'img/mike.png'
-  }];
+  }*/];
 
   return {
     all: function() {

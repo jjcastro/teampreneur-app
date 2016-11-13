@@ -33,7 +33,14 @@
 			    	<p>{{app.description}}</p>
 			    	<br>
 			    	<h2>Keywords relevantes</h2>
-			    	<span ng-repeat="keyword in app.keywords" class="proyect-keyword">{{keyword}}</span>
+			    	<div class="keywords"> 
+			    	<span ng-repeat="keyword in app.keywords" class="proyect-keyword" ng-class="{blue : keyword.relevant}">{{keyword.name}}</span>
+			    	</div>
 				  </div>
+
+				  <div class="button-bar padding">
+					  <a class="button button-balanced">Aplicar</a>
+					  <a class="button button-assertive">Rechazar</a>
+					</div>
   </ion-content>
 </ion-view>

@@ -1,11 +1,36 @@
 td-cards {
   display: block;
+  z-index: 20;
+  position: relative;
 }
 
 td-card {
   position: absolute;
   /*left: 50%;*/
-  margin-top: 0px;
+  /*margin-top: 50px;*/
+  /*transition: all 0.5s ease;*/
+  width: 100%;
+  z-index: 20;
+}
+
+td-card .item.item-text-wrap p {
+
+  /*white-space: nowrap;*/
+  /*overflow: hidden;*/
+  /*text-overflow: ellipsis;*/
+  /*height: 3.6em;*/
+  /*line-height: 1.2em;*/
+}
+
+
+.text-clamp {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 1.3em;     /* fallback */
+  max-height: 6.5em;      /* fallback */
+  -webkit-line-clamp: 5; /* number of lines to show */
+  -webkit-box-orient: vertical;
 }
 
 td-card.card-0 {
@@ -25,9 +50,22 @@ td-card.card-2 {
   z-index: 8;
 }
 
+.keywords {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 1.3em;     /* fallback */
+  max-height: 80px;      /* fallback */
+  -webkit-line-clamp: 3; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.proyect-keyword.blue {
+  background-color: #EC4940;
+}
 
 .proyect-keyword {
-  background-color: #387ef5;
+  background-color: #ccc;
   color: #fff;
   text-transform: uppercase;
   font-weight: 900;
@@ -53,7 +91,7 @@ td-card.card-2 {
   border-radius: 5px;
   opacity: 0;
 
-  transform: rotate(20deg) scale(1.5) translate(10px, -20px);
+  transform: translate(25px, -45px) rotate(30deg) scale(1.5);
 }
 
 .no-text {
@@ -69,7 +107,7 @@ td-card.card-2 {
   border-radius: 5px;
   opacity: 0;
 
-  transform: rotate(-20deg) scale(1.5) translate(-10px, -20px);
+  transform: translate(-30px, -55px) rotate(-30deg) scale(1.5);
 }
 
 #application-detail .item.item-divider {
@@ -77,4 +115,27 @@ td-card.card-2 {
   padding-bottom: 20px;
   font-size: 1.2em;
 
+}
+
+#tab-apply .item.item-divider {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 1.2em;
+  line-height: 1.3em;
+}
+
+#tab-apply > div.slide {
+  position: absolute;
+  bottom: 50px;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 90%;
+  border: 0;
+  text-align: center;
+  color: #aaa;
+  font-weight: 600;
+  font-size: 1.5em;
+  line-height: 1.2em;
 }

@@ -1,37 +1,47 @@
 <ion-view view-title="Teampreneur">
-  <ion-content scroll="false">
+  <ion-content scroll="false" id="tab-apply">
     
   	<td-cards>
 		  <td-card ng-repeat="card in cards" on-destroy="cardDestroyed($index)" on-swipe="cardSwiped($index)">
 		    <div class="list card">
 
 		    	<div class="item item-divider">
-				    {{card.title}}
+				    {{card.name}}
 				    <p>{{card.subtitle}}</p>
 					</div>
 
 			    <div class="item item-avatar">
-				    <img src="{{card.img}}">
-				    <h2>{{card.name}}</h2>
+				    <img src="img/mike.png">
+				    <h2>{{card.user_name}}</h2>
 				    <p>{{card.occupation}}</p>
 				  </div>
 
 				  <div class="item item-text-wrap">
 				  	
-				  	<div class="no-text">NOPE</div>
-	        <div class="yes-text">LIKE</div>
+				  	<div class="no-text">RECHAZAR</div>
+	        <div class="yes-text">APLICAR</div>
 
 					  
 
 				    <h2>Sobre el proyecto</h2>
+				    <div class="text-clamp">
 			    	<p>{{card.description}}</p>
+			    	</div>
 			    	<br>
 			    	<h2>Keywords relevantes</h2>
-			    	<span ng-repeat="keyword in card.keywords" class="proyect-keyword">{{keyword}}</span>
+			    	<div class="keywords"> 
+			    	<span ng-repeat="keyword in card.keywords" class="proyect-keyword" ng-class="{blue : keyword.relevant}">{{keyword.name}}</span>
+			    	</div>
 				  </div>
 				</div>
 		  </td-card>
 		</td-cards>
+
+	<div class="slide item item-text-wrap item-icon-left item-icon-right" href="#">
+    <i class="icon ion-arrow-left-c"></i>
+    Desliza las tarjetas<br>para aplicar o rechazar
+    <i class="icon ion-arrow-right-c"></i>
+  </div>
 
   </ion-content>
 </ion-view>
