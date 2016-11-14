@@ -8,7 +8,7 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ionic.contrib.ui.tinderCards', 'mainCtrl', 'authService'])
 
 .constant('ApiEndpoint', {
-  url: 'http://localhost:8100/api'
+  url: 'http://teampreneur.herokuapp.com/api'
 })
 
 .run(function($ionicPlatform) {
