@@ -6,6 +6,28 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var replace = require('replace');
+var replaceFiles = ['./www/js/app.js'];
+
+gulp.task('add-proxy', function() {
+  return replace({
+    regex: "http://teampreneur.herokuapp.com/api",
+    replacement: "http://localhost:8100/api",
+    paths: replaceFiles,
+    recursive: false,
+    silent: false,
+  });
+})
+
+gulp.task('remove-proxy', function() {
+  return replace({
+    regex: "http://localhost:8100/api",
+    replacement: "http://teampreneur.herokuapp.com/api",
+    paths: replaceFiles,
+    recursive: false,
+    silent: false,
+  });
+})
 
 var paths = {
   sass: ['./scss/**/*.scss']

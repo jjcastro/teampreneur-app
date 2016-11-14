@@ -122,7 +122,8 @@ td-card.card-2 {
 
 }
 
-#tab-apply .item.item-divider {
+#tab-apply .item.item-divider,
+ion-modal-view .item.item-divider {
   padding-top: 15px;
   padding-bottom: 15px;
   font-size: 1.2em;
