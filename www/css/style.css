@@ -130,6 +130,10 @@ ion-modal-view .item.item-divider {
   line-height: 1.3em;
 }
 
+#account {
+  background-color: #ffffff;
+}
+
 #tab-apply > div.slide {
   position: absolute;
   bottom: 50px;

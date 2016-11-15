@@ -8,7 +8,7 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ionic.contrib.ui.tinderCards', 'mainCtrl', 'authService'])
 
 .constant('ApiEndpoint', {
-  url: 'http://teampreneur.herokuapp.com/api'
+  url: 'http://localhost:8100/api'
 })
 
 .run(function($ionicPlatform) {
@@ -98,6 +98,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       views: {
         'tab-account': {
           templateUrl: 'templates/tab-account.html',
+          controller: 'AccountCtrl'
+        }
+      }
+    })
+    .state('tab.account-keywords-detail', {
+      url: '/account/keywords',
+      views: {
+        'tab-account': {
+          templateUrl: 'templates/account-keyword-detail.html',
           controller: 'AccountCtrl'
         }
       }

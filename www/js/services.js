@@ -1,5 +1,16 @@
 angular.module('starter.services', [])
 
+.factory('Account', function($http, ApiEndpoint, Auth) {
+  return {
+    update: function(user) {
+      return $http.put(ApiEndpoint.url + '/me', user);
+    },
+    getKeywords: function() {
+      return $http.get(ApiEndpoint.url + '/keywords/user');
+    }
+  };
+})
+
 .factory('Projects', function($http, ApiEndpoint, Auth) {
 
   var cards = [

@@ -1,9 +1,21 @@
-<ion-view view-title="Account">
-  <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+<ion-view view-title="Mi cuenta">
+  <ion-content id="account">
+
+			    <div class="item item-avatar">
+				    <img src="img/mike.png">
+				    <h2>{{user.name}}</h2>
+				    <p>{{user.occupation}}</p>
+				  </div>
+				  
+				  <ion-list class="padding">
+					  <ion-item ng-click="changeName()">
+					  Editar nombre
+					  </ion-item>
+					  <ion-item ng-click="changeOccupation()">
+					  Editar ocupación
+					  </ion-item>
+				  </ion-list>
+
+				  <a class="button button-block icon-right ion-chevron-right" href="#/tab/account/keywords">Editar keywords</a>
   </ion-content>
 </ion-view>

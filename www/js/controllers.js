@@ -77,8 +77,69 @@ angular.module('starter.controllers', [])
   $scope.app = Applications.get($stateParams.applicationId);
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('AccountCtrl', function($scope, $ionicPopup, Auth, Account) {
   $scope.settings = {
     enableFriends: true
   };
+
+
+  Auth.getUser()
+    .success(function(data) {
+      $scope.user = data;
+    });
+
+
+  $scope.changeName = function() {
+    $ionicPopup.prompt({
+      title: 'Editar nombre',
+      template: 'Ingresa el nuevo nombre',
+      inputPlaceholder: 'Nombre',
+      cancelText: 'Cancelar',
+      okText: 'Aceptar'
+    }).then(function(res) {
+      if(res && res !== "") {
+        $scope.user.name = res;
+        Account.update($scope.user)
+          .success(function(data) {
+            console.log(data);
+          });
+      }
+    });
+  };
+
+  $scope.changeOccupation = function() {
+    $ionicPopup.prompt({
+      title: 'Editar nombre',
+      template: 'Ingresa la nueva ocupación',
+      inputPlaceholder: 'Ocupación',
+      cancelText: 'Cancelar',
+      okText: 'Aceptar'
+    }).then(function(res) {
+      if(res && res !== "") {
+        $scope.user.occupation = res;
+        Account.update($scope.user)
+          .success(function(data) {
+            console.log(data);
+          });
+      }
+    });
+  };
+
+
+  $scope.data = {
+    showDelete: false
+  };
+
+  $scope.onItemDelete = function(item) {
+    $scope.items.splice($scope.items.indexOf(item), 1);
+  };
+
+  $scope.shouldShowDelete = false;
+  $scope.shouldShowReorder = false;
+  $scope.listCanSwipe = true;
+
+  Account.getKeywords()
+    .success(function(data) {
+      $scope.keywords = data;
+    })
 });
