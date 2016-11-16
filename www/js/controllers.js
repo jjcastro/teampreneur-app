@@ -34,6 +34,9 @@ angular.module('starter.controllers', [])
    });
   
    $scope.openModal = function(card) {
+      if (window.StatusBar) {
+        StatusBar.styleBlackOpaque();
+      }
       $scope.openCard = card;
       $scope.modal.show();
    };
@@ -77,7 +80,7 @@ angular.module('starter.controllers', [])
   $scope.app = Applications.get($stateParams.applicationId);
 })
 
-.controller('AccountCtrl', function($scope, $ionicPopup, Auth, Account) {
+.controller('AccountCtrl', function($scope, $http, $ionicPopup, Auth, Account, ApiEndpoint) {
   $scope.settings = {
     enableFriends: true
   };
@@ -125,21 +128,49 @@ angular.module('starter.controllers', [])
     });
   };
 
-
-  $scope.data = {
-    showDelete: false
+  $scope.cancelButtonClickedMethod = function (callback) {
+    if (window.StatusBar) {
+      StatusBar.styleLightContent();
+    }
   };
 
-  $scope.onItemDelete = function(item) {
-    $scope.items.splice($scope.items.indexOf(item), 1);
+  $scope.getTestItems = function (query, isInitializing) {
+      if(isInitializing) {
+        if (window.StatusBar) {
+          StatusBar.styleBlackOpaque();
+        }
+      }
+      if (query == "") {
+        return $http.get(ApiEndpoint.url + '/keywords');
+      } else {
+        return $http.get(ApiEndpoint.url + '/keywords?search=' + query);
+      }
+      return [];
   };
 
-  $scope.shouldShowDelete = false;
-  $scope.shouldShowReorder = false;
-  $scope.listCanSwipe = true;
+  $scope.itemsClicked = function (callback) {
+    console.log(callback);
+    Account.addKeyword(callback.item)
+      .then(function(data) {
+        console.log(data);
+      })
+  };
 
-  Account.getKeywords()
+  $scope.itemsRemoved = function (callback) {
+    Account.removeKeyword(callback.item)
+      .success(function(data) {
+        console.log(data);
+      })
+  };
+
+  $scope.modelToItemMethod = function (modelValue) {
+    return modelValue;
+  }
+
+  Account.getUserKeywords()
     .success(function(data) {
-      $scope.keywords = data;
-    })
+      $scope.externalModel = data;
+    });
+
+  
 });

@@ -16,6 +16,27 @@
 					  </ion-item>
 				  </ion-list>
 
-				  <a class="button button-block icon-right ion-chevron-right" href="#/tab/account/keywords">Editar keywords</a>
+				  <!-- <a class="button button-block icon-right ion-chevron-right" href="#/tab/account/keywords">Editar keywords</a> -->
+
+				  <label class="item item-input">
+                <span class="input-label">Editar palabras clave</span>
+                <input ion-autocomplete type="text" readonly="readonly" class="ion-autocomplete" autocomplete="off"
+                       ng-model="model"
+                       item-value-key="name"
+                       item-view-value-key="name"
+                       items-method="getTestItems(query)"
+                       placeholder="Buscar..."
+                       items-clicked-method="itemsClicked(callback)"
+                       items-removed-method="itemsRemoved(callback)"
+                       selected-items-label="Seleccionados:"
+                       select-items-label="Seleccionar palabras clave:"
+                       cancel-label="Volver"
+                       cancel-button-clicked-method="cancelButtonClickedMethod(callback)" 
+                       model-to-item-method="modelToItemMethod(modelValue)"
+                       external-model="externalModel" 
+                       />
+            </label>
+
+          <ion-item class="item-text-wrap">{{model}}</ion-item>
   </ion-content>
 </ion-view>

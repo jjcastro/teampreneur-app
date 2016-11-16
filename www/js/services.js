@@ -5,176 +5,19 @@ angular.module('starter.services', [])
     update: function(user) {
       return $http.put(ApiEndpoint.url + '/me', user);
     },
-    getKeywords: function() {
+    getUserKeywords: function() {
       return $http.get(ApiEndpoint.url + '/keywords/user');
+    },
+    addKeyword: function(item) {
+      return $http.post(ApiEndpoint.url + '/keywords/user', item);
+    },
+    removeKeyword: function(item) {
+      return $http.delete(ApiEndpoint.url + '/keywords/user', item);
     }
   };
 })
 
 .factory('Projects', function($http, ApiEndpoint, Auth) {
-
-  var cards = [
-    {
-      id: 1,
-      img: 'img/max.png',
-      name: 'Mike Perry',
-      occupation: 'Ingeniero Civil',
-      title: 'Teampreneur',
-      subtitle: 'Plataforma para conectar emprendedores',
-      description: 'Bacon ipsum dolor amet brisket chuck beef ribs filet mignon kevin bacon doner prosciutto leberkas t-bone pastrami swine. Pastrami chuck short loin filet mignon salami sausage ground round doner hamburger tail ball tip. Sirloin ham hock meatloaf beef ribs strip steak. Shankle cupim salami swine ribeye leberkas.',
-      keywords: [
-        {
-          name: 'java',
-          relevant: true,
-        },
-        {
-          name: 'desarrollo web',
-          relevant: true,
-        },
-        {
-          name: 'node.js',
-          relevant: true,
-        },
-        {
-          name: 'desarrollo móvil',
-          relevant: true,
-        },
-        {
-          name: 'cordova',
-          relevant: true,
-        },
-        {
-          name: 'responsive',
-          relevant: true,
-        },
-        {
-          name: 'backend',
-          relevant: false,
-        },
-        {
-          name: 'finanzas',
-          relevant: false,
-        },
-        {
-          name: 'administración',
-          relevant: false,
-        },
-        {
-          name: 'diseño',
-          relevant: false,
-        },
-        {
-          name: 'bilingüe',
-          relevant: false,
-        },
-        {
-          name: 'ti',
-          relevant: false,
-        },
-        {
-          name: 'gerente',
-          relevant: false,
-        },
-        {
-          name: 'administración',
-          relevant: false,
-        },
-        {
-          name: 'diseño',
-          relevant: false,
-        },
-        {
-          name: 'bilingüe',
-          relevant: false,
-        },
-        {
-          name: 'ti',
-          relevant: false,
-        },
-        {
-          name: 'gerente',
-          relevant: false,
-        },
-      ]
-    },
-    {
-      id: 2,
-      img: 'img/mike.png',
-      name: 'Marty McFly',
-      occupation: 'Diseñador web',
-      title: 'Lorem App',
-      subtitle: 'Bacon ipsum dolor',
-      description: 'Bacon ipsum dolor amet brisket chuck beef ribs filet mignon kevin bacon doner prosciutto leberkas t-bone pastrami swine. Pastrami chuck short loin filet mignon salami sausage ground round doner hamburger tail ball tip. Sirloin ham hock meatloaf beef ribs strip steak. Shankle cupim salami swine ribeye leberkas.',
-    keywords: [
-        {
-          name: 'iphone',
-          relevant: true,
-        },
-        {
-          name: 'ios',
-          relevant: true,
-        },
-        {
-          name: 'apple',
-          relevant: true,
-        },
-        {
-          name: 'android',
-          relevant: true,
-        },
-        {
-          name: 'backend',
-          relevant: false,
-        },
-        {
-          name: 'finanzas',
-          relevant: false,
-        },
-        {
-          name: 'administración',
-          relevant: false,
-        },
-        {
-          name: 'diseño',
-          relevant: false,
-        },
-        {
-          name: 'bilingüe',
-          relevant: false,
-        },
-        {
-          name: 'ti',
-          relevant: false,
-        },
-        {
-          name: 'gerente',
-          relevant: false,
-        },
-        {
-          name: 'administración',
-          relevant: false,
-        },
-        {
-          name: 'diseño',
-          relevant: false,
-        },
-        {
-          name: 'bilingüe',
-          relevant: false,
-        },
-        {
-          name: 'ti',
-          relevant: false,
-        },
-        {
-          name: 'gerente',
-          relevant: false,
-        },
-      ]
-    },
-  ];
-
-
 
   return {
     all: function() {
@@ -277,27 +120,7 @@ angular.module('starter.services', [])
           relevant: false,
         },
     ]
-  }/*, {
-    id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'img/max.png'
-  }, {
-    id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'img/adam.jpg'
-  }, {
-    id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'img/perry.png'
-  }, {
-    id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }*/];
+  }];
 
   return {
     all: function() {

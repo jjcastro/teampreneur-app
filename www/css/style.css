@@ -18,6 +18,10 @@ td-card {
   height: 410px; 
 }
 
+.ion-autocomplete-cancel {
+  color: #333 !important;
+}
+
 td-card .item.item-text-wrap p {
 
   /*white-space: nowrap;*/

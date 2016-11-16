@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ionic.contrib.ui.tinderCards', 'mainCtrl', 'authService'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ionic.contrib.ui.tinderCards', 'mainCtrl', 'authService', 'ion-autocomplete'])
 
 .constant('ApiEndpoint', {
   url: 'http://localhost:8100/api'
@@ -24,7 +24,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       // org.apache.cordova.statusbar required
       // StatusBar.styleDefault();
       StatusBar.overlaysWebView(true);
-      StatusBar.style(1); //Light
+      StatusBar.styleLightContent(); //Light
     }
   });
 })
