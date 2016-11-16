@@ -148,12 +148,17 @@ angular.module('starter.controllers', [])
       return [];
   };
 
+  $scope.loaded = false;
+
   $scope.itemsClicked = function (callback) {
-    console.log(callback);
-    Account.addKeyword(callback.item)
-      .then(function(data) {
-        console.log(data);
-      })
+    if($scope.loaded) {
+      console.log(callback);
+      Account.addKeyword(callback.item)
+        .then(function(data) {
+          console.log(data);
+          $scope.loaded = true;
+        })
+    }
   };
 
   $scope.itemsRemoved = function (callback) {
@@ -170,7 +175,26 @@ angular.module('starter.controllers', [])
   Account.getUserKeywords()
     .success(function(data) {
       $scope.externalModel = data;
+
     });
 
   
+})
+
+.controller('ProjectCtrl', function($scope, $http, $ionicPopup, Auth, Account, ApiEndpoint) {
+
+  $scope.getTestItems = function (query, isInitializing) {
+    if(isInitializing) {
+      if (window.StatusBar) {
+        StatusBar.styleBlackOpaque();
+      }
+    }
+    if (query == "" ) {
+      return $http.get(ApiEndpoint.url + '/keywords');
+    } else {
+      return $http.get(ApiEndpoint.url + '/keywords?search=' + query);
+    }
+    return [];
+  };
+
 });

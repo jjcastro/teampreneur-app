@@ -88,7 +88,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       views: {
         'tab-project': {
           templateUrl: 'templates/tab-project.html',
-          // controller: 'ProCtrl'
+          controller: 'ProjectCtrl'
         }
       }
     })
