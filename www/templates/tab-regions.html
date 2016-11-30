@@ -1,0 +1,68 @@
+<ion-view view-title="Regions">
+  <ion-content>
+
+  	<ion-list>
+  		<div class="item item-divider">
+		    Regions
+		  </div>
+
+		  
+      <ion-item class="item-remove-animate item-thumbnail-left item-icon-right" ng-repeat="reg in region.regions track by $index" type="item-text-wrap" href="#/tab/regions/{{ reg.id }}/fields">
+      	<img src="img/co.gif">
+        <h2>{{reg.name}}</h2>
+        <p>ID: {{reg.id}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button ng-href="#/regions/edit/{{ reg.id }}" class="button-positive">Edit</ion-option-button>
+				<ion-option-button href="#" ng-click="region.deleteRegion(reg.id)" class="button-assertive">Delete</ion-option-button>
+      </ion-item>
+    </ion-list>
+
+	<!-- <div class="slide item item-text-wrap item-icon-left item-icon-right" href="#">
+    <i class="icon ion-arrow-left-c"></i>
+    Desliza las tarjetas<br>para aplicar o rechazar
+    <i class="icon ion-arrow-right-c"></i>
+  </div> -->
+
+  <script id="my-modal.html" type = "text/ng-template">
+   <ion-modal-view>
+      <ion-header-bar class="bar bar-header">
+         <h1 class = "title">Sobre {{openCard.name}}</h1>
+         <button class="button" ng-click="modal.hide()">Cerrar</button>
+      </ion-header-bar>
+		
+      <ion-content>
+         <div class="item item-divider">
+				    {{openCard.name}}
+				    <p>{{openCard.subtitle}}</p>
+					</div>
+
+			    <div class="item item-avatar">
+				    <img src="img/mike.png">
+				    <h2>{{openCard.user_name}}</h2>
+				    <p>{{openCard.occupation}}</p>
+				  </div>
+
+				  <div class="item item-text-wrap">
+				  	
+				  	<div class="no-text">NOPE</div>
+	        <div class="yes-text">LIKE</div>
+
+					  
+
+				    <h2>Sobre el proyecto</h2>
+			    	<p>{{openCard.description}}</p>
+			    	<br>
+			    	<h2>Keywords relevantes</h2>
+			    	<div class="keywords"> 
+			    	<span ng-repeat="keyword in openCard.keywords" class="proyect-keyword" ng-class="{blue : keyword.relevant}">{{keyword.name}}</span>
+			    	</div>
+				  </div>
+      </ion-content>
+   </ion-modal-view>
+</script>
+
+  </ion-content>
+</ion-view>
+
+

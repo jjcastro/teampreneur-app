@@ -1,0 +1,34 @@
+<ion-view view-title="Well: {{sensor.well_id}}">
+  <ion-content>
+
+  	<ion-list>
+  		<ion-item class="item-remove-animate item-icon-right"  type="item-text-wrap">
+        <h2>Well</h2>
+        <p>ID: {{sensor.well_id}}</p>
+      </ion-item>
+
+  		<div class="item item-divider">
+		    Sensors
+
+		  </div>
+      <ion-item class="item-remove-animate item-icon-right" ng-repeat="a in sensor.sensors  track by $index" type="item-text-wrap" href="#/tab/regions/{{sensor.region_id}}/fields/{{ sensor.field_id }}/wells/{{sensor.well_id}}/sensors/{{a.id}}/records">
+        <h2>{{a.id}}</h2>
+        <p>Type: {{a.type}}</p>
+		    <p>Rate: {{a.rate}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button ng-href="#/regions/edit/{{ reg.id }}" class="button-positive">Edit</ion-option-button>
+				<ion-option-button href="#" ng-click="region.deleteRegion(reg.id)" class="button-assertive">Delete</ion-option-button>
+      </ion-item>
+    </ion-list>
+
+	<!-- <div class="slide item item-text-wrap item-icon-left item-icon-right" href="#">
+    <i class="icon ion-arrow-left-c"></i>
+    Desliza las tarjetas<br>para aplicar o rechazar
+    <i class="icon ion-arrow-right-c"></i>
+  </div> -->
+
+  </ion-content>
+</ion-view>
+
+

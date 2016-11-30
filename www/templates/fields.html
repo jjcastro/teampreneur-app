@@ -1,0 +1,34 @@
+<ion-view view-title="Region: {{field.regionName}}">
+  <ion-content>
+
+  	<ion-list>
+  		<ion-item class="item-remove-animate item-thumbnail-left item-icon-right"  type="item-text-wrap">
+      	<img src="img/co.gif">
+        <h2>{{field.regionName}}</h2>
+        <p>ID: {{field.region_id}}</p>
+      </ion-item>
+
+  		<div class="item item-divider">
+		    Fields
+
+		  </div>
+      <ion-item class="item-remove-animate item-icon-right" ng-repeat="a in field.fields" type="item-text-wrap" href="#/tab/regions/{{a.region}}/fields/{{ a.id }}/wells">
+        <h2>{{a.name}}</h2>
+        <p>ID: {{a.id}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button ng-href="#/regions/edit/{{ reg.id }}" class="button-positive">Edit</ion-option-button>
+				<ion-option-button href="#" ng-click="region.deleteRegion(reg.id)" class="button-assertive">Delete</ion-option-button>
+      </ion-item>
+    </ion-list>
+
+	<!-- <div class="slide item item-text-wrap item-icon-left item-icon-right" href="#">
+    <i class="icon ion-arrow-left-c"></i>
+    Desliza las tarjetas<br>para aplicar o rechazar
+    <i class="icon ion-arrow-right-c"></i>
+  </div> -->
+
+  </ion-content>
+</ion-view>
+
+

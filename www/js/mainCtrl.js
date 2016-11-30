@@ -13,7 +13,7 @@ angular.module('mainCtrl', [])
     
     if (toState.name == 'login' && vm.loggedIn) {
       event.preventDefault();
-      $state.go('tab.apply');
+      $state.go('tab.regions');
     }
     else if (toState.name !== 'login' && !vm.loggedIn) {
       event.preventDefault();
@@ -24,8 +24,16 @@ angular.module('mainCtrl', [])
     Auth.getUser()
       .then(function(data) {
 
-        vm.user = data.data;
-        console.log(vm.user);
+        var user = data.data;
+        if(user.user_type === 1) {
+          user.type = "Jefe de Campo";
+        }
+        else if(user.user_type === 2) {
+          user.type = "Jefe de Producción";
+        }
+        console.log(user);
+
+        vm.user = user;
       }); 
   }); 
 
@@ -33,13 +41,13 @@ angular.module('mainCtrl', [])
   vm.doLogin = function() {
     vm.processing = true;
 
-    console.log(vm.loginData.email);
+    console.log(vm.loginData.username);
     console.log(vm.loginData.password);
 
     // clear the error
     vm.error = '';
 
-    Auth.login(vm.loginData.email, vm.loginData.password)
+    Auth.login(vm.loginData.username, vm.loginData.password)
       .success(function(data) {
 
         console.log(data);
@@ -47,7 +55,7 @@ angular.module('mainCtrl', [])
 
         // if a user successfully logs in, redirect to users page
         if (data.success)     
-          $state.go('tab.apply');
+          $state.go('tab.regions');
         else 
           vm.error = data.message;
         

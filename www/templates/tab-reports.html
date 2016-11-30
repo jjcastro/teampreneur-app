@@ -1,0 +1,76 @@
+<ion-view view-title="Reports">
+  <ion-content>
+      <span ng-show="reportForm.Type.$touched && reportForm.Type.$invalid">The type is required.</span>
+    <span ng-show="reportForm.Object.$touched && reportForm.Object.$invalid && !(reportForm.Type.$invalid)">{{'You need to select a '+report.reportArea+' from the list'}}</span>
+    <span ng-show="reportForm.Metric.$touched && reportForm.Metric.$invalid">The Metric is required.</span>
+    <span ng-show="reportForm.Range.$touched && reportForm.Range.$invalid">The type is required.</span>
+    <span ng-show="reportForm.Date.$touched && reportForm.Date.$invalid">The type is required.</span>
+          <ion-list class="padding"><div class="item item-divider">
+    Type
+  </div>
+					  <ion-radio ng-change='report.listarObjetos()' ng-model="report.reportArea" ng-value="'Well'">Well</ion-radio>
+					  <ion-radio ng-change='report.listarObjetos()' ng-model="report.reportArea" ng-value="'Field'">Field</ion-radio>
+					  <ion-radio ng-change='report.listarObjetos()' ng-model="report.reportArea" ng-value="'Region'">Region</ion-radio>
+					</ion-list>
+
+					<div class="list">
+					<div class="item item-divider">
+    Details
+  </div>
+	          <label class="item item-input item-select">
+					    <div class="input-label">
+					      {{  report.reportArea +' Zone  ' }}
+					    </div>
+					    <select ng-model="report.nameArea">
+					      <option ng-repeat="object in report.array | filter:query ">{{object.name}}</option>
+					    </select>
+					  </label>
+
+					  <label class="item item-input item-select">
+					    <div class="input-label">
+					      Metric
+					    </div>
+					    <select ng-model="report.reportType" ng-change='report.setUnit()'>
+					      <option value="flow">Flow</option>
+	              <option value="energy">Energy</option>
+	              <option value="temperature">Temperature</option>
+					    </select>
+					  </label>
+
+					  <label class="item item-input item-select">
+					    <div class="input-label">
+					      Range
+					    </div>
+					    <select ng-model="report.reportPeriod">
+					      <option value="monthly">Monthly</option>
+			          <option value="quarterly">Quarterly</option>
+			          <option value="biannual">Biannual</option>
+			          <option value="annual">Annual</option>
+					    </select>
+					  </label>
+
+					  <label class="item item-input">
+					    <div class="input-label">
+					      Initial Date
+					    </div>
+					    <input name="Date" class="item item-input" type="Date" ng-model="report.beginDate">
+					  </label>
+
+				  </div>
+
+				  <div class="list">
+				  	<a class="item" href="#" ng-show="!report.processing">
+					    Result
+					    <span class="item-note">
+					      {{report.report.value+ " "+ report.unit}}
+					    </span>
+					  </a>
+					  <button class="button button-full button-positive" ng-click="report.generate()">
+						  Generate
+						</button>
+					</div>
+        
+
+
+  </ion-content>
+</ion-view>

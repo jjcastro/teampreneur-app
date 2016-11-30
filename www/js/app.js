@@ -5,7 +5,21 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ionic.contrib.ui.tinderCards', 'mainCtrl', 'authService', 'ion-autocomplete'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 
+  'authService', 
+  'mainCtrl',
+  'regionCtrl',
+  'regionService',
+  'fieldCtrl',
+  'fieldService',
+  'wellCtrl',
+  'wellService', 
+  'reportCtrl', 
+  'reportService', 
+  'sensorCtrl',
+  'sensorService',
+  'recordCtrl',
+  'recordService'])
 
 .constant('ApiEndpoint', {
   url: 'http://localhost:8100/api'
@@ -54,41 +68,67 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
   // Each tab has its own nav history stack:
 
-  .state('tab.apply', {
-    url: '/apply',
-    views: {
-      'tab-apply': {
-        templateUrl: 'templates/tab-apply.html',
-        controller: 'ApplyCtrl'
-      }
-    }
-  })
-
-  .state('tab.applications', {
-      url: '/applications',
+  .state('tab.regions', {
+      url: '/regions',
       views: {
-        'tab-applications': {
-          templateUrl: 'templates/tab-applications.html',
-          controller: 'ApplicationsCtrl'
+        'tab-regions': {
+          templateUrl: 'templates/tab-regions.html',
+          controller: 'regionController as region'
+        }
+      }
+    })
+    .state('tab.fields', {
+        url: '/regions/:region_id/fields',
+        views: {
+          'tab-regions': {
+            templateUrl: 'templates/fields.html',
+            controller: 'fieldController as field'
+          }
+        }
+      })
+    .state('tab.wells', {
+        url: '/regions/:region_id/fields/:field_id/wells',
+        views: {
+          'tab-regions': {
+            templateUrl: 'templates/wells.html',
+            controller: 'wellController as well'
+          }
+        }
+      })
+    .state('tab.sensors', {
+        url: '/regions/:region_id/fields/:field_id/wells/:well_id/sensors',
+        views: {
+          'tab-regions': {
+            templateUrl: 'templates/sensors.html',
+            controller: 'sensorController as sensor'
+          }
+        }
+      })
+    .state('tab.records', {
+        url: '/regions/:region_id/fields/:field_id/wells/:well_id/sensors/:sensor_id/records',
+        views: {
+          'tab-regions': {
+            templateUrl: 'templates/records.html',
+            controller: 'recordController as record'
+          }
+        }
+      })
+
+  .state('tab.reports', {
+      url: '/reports',
+      views: {
+        'tab-reports': {
+          templateUrl: 'templates/tab-reports.html',
+          controller: 'reportController as report'
         }
       }
     })
     .state('tab.application-detail', {
       url: '/applications/:applicationId',
       views: {
-        'tab-applications': {
+        'tab-reports': {
           templateUrl: 'templates/application-detail.html',
           controller: 'ApplicationDetailCtrl'
-        }
-      }
-    })
-
-  .state('tab.project', {
-      url: '/project',
-      views: {
-        'tab-project': {
-          templateUrl: 'templates/tab-project.html',
-          controller: 'ProjectCtrl'
         }
       }
     })
@@ -98,15 +138,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       views: {
         'tab-account': {
           templateUrl: 'templates/tab-account.html',
-          controller: 'AccountCtrl'
-        }
-      }
-    })
-    .state('tab.account-keywords-detail', {
-      url: '/account/keywords',
-      views: {
-        'tab-account': {
-          templateUrl: 'templates/account-keyword-detail.html',
           controller: 'AccountCtrl'
         }
       }
@@ -130,6 +161,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/apply');
+  $urlRouterProvider.otherwise('/tab/regions');
 
 });

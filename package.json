@@ -1,7 +1,7 @@
 {
-  "name": "teampreneur-app",
+  "name": "well-col-app",
   "version": "1.1.1",
-  "description": "teampreneur-app: An Ionic project",
+  "description": "well-col-app: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
